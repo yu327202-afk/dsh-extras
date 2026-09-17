@@ -20,7 +20,7 @@ import { Readable, Writable } from "node:stream";
  * 会话日志根目录。
  *
  * DSH 把每个工作区映射成 `~/.dsh/sessions/<编码后的路径>/` 这样一个目录，
- * 编码规则不是人能猜的（含空格的工作区会变成 `--F-DSH~0020desktop-DSH_Workspace--`），
+ * 编码规则不是人能猜的（例如 `MyProject` 会变成 `--C-Users-me-MyProject--` 这种形式），
  * 所以这里**按时间取最新的一个**，而不是硬编码某个工作区名——硬编码对别人根本跑不通。
  *
  * 想固定到某个会话时，用 SESSIONS_ROOT 环境变量覆盖。
