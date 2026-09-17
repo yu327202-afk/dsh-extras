@@ -33,7 +33,7 @@
 
 ### 1.2 美术素材（**不随本仓库分发**）
 
-详见 [`ASSETS.md`](ASSETS.md)。简要：
+详见 [`plugins/dsh-fairy-theme/ASSETS.md`](plugins/dsh-fairy-theme/ASSETS.md)。简要：
 
 | 素材 | 来源 | 状态 |
 |---|---|---|
