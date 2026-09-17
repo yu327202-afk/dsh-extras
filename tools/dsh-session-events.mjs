@@ -16,7 +16,26 @@ import zlib from "node:zlib";
 import { pipeline } from "node:stream/promises";
 import { Readable, Writable } from "node:stream";
 
-const ROOT = path.join(os.homedir(), ".dsh", "sessions", "--F-DSH~0020desktop-DSH_Workspace--");
+/**
+ * 会话日志根目录。
+ *
+ * DSH 把每个工作区映射成 `~/.dsh/sessions/<编码后的路径>/` 这样一个目录，
+ * 编码规则不是人能猜的（含空格的工作区会变成 `--F-DSH~0020desktop-DSH_Workspace--`），
+ * 所以这里**按时间取最新的一个**，而不是硬编码某个工作区名——硬编码对别人根本跑不通。
+ *
+ * 想固定到某个会话时，用 SESSIONS_ROOT 环境变量覆盖。
+ */
+function pickRoot() {
+  if (process.env.SESSIONS_ROOT) return process.env.SESSIONS_ROOT;
+  const base = path.join(os.homedir(), ".dsh", "sessions");
+  if (!fs.existsSync(base)) return base;
+  const dirs = fs.readdirSync(base, { withFileTypes: true })
+    .filter((d) => d.isDirectory())
+    .map((d) => ({ p: path.join(base, d.name), m: fs.statSync(path.join(base, d.name)).mtimeMs }))
+    .sort((a, b) => b.m - a.m);
+  return dirs[0]?.p ?? base;
+}
+const ROOT = pickRoot();
 const PRUNE_MARKER = "[... tool result middle pruned ...]";
 const fmt = (n) => (typeof n === "number" ? n.toLocaleString("en-US") : String(n ?? "?"));
 

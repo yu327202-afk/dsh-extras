@@ -20,8 +20,7 @@
 
 ### 1.1 参考了 `dsh-fairy-voice@1.0.5`（代码写法）
 
-该包在本机 `F:\dsh-standalone\home\profiles\dev\node_modules\dsh-fairy-voice`，
-无 LICENSE 文件。以下三处**写法**参考了它：
+该包发表于 npm（`dsh-fairy-voice`），无 LICENSE 文件。以下三处**写法**参考了它：
 
 | 位置 | 参考内容 | 程度 |
 |---|---|---|
