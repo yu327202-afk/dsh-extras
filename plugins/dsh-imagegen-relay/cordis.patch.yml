@@ -1,0 +1,13 @@
+# dsh-imagegen-relay bundle patch layer —— 把聚合中转挂载进 profile 树。
+#
+# 作用：dsh-image-gen 的 openai-compat provider 只能填一个 baseURL，
+# 而用户有多家生图渠道。本插件在 DSH 进程内起一个 127.0.0.1 端点，
+# 把请求按 model 名（"渠道/模型"）路由到对应上游，从而一个地址覆盖全部渠道。
+#
+# 生命周期：随 DSH 启停，不注册服务、不写计划任务；端口仅本机可访问。
+- insert:
+    - id: dsh-imagegen-relay
+      name: dsh-imagegen-relay
+      config:
+        host: 127.0.0.1
+        port: 8788

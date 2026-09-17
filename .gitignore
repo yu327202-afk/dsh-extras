@@ -1,0 +1,30 @@
+# ── 依赖与构建产物 ─────────────────────────────────────────────
+node_modules/
+dist/
+*.tgz
+pnpm-lock.yaml
+package-lock.json
+yarn.lock
+
+# ── 素材：第三方版权资源，有意不分发 ──────────────────────────
+# dsh-fairy-theme 的美术素材（角色形象、动画帧、语音）权利不属于本项目。
+# 详见 plugins/dsh-fairy-theme/ASSETS.md
+**/assets/
+!**/assets/.gitkeep
+
+# ── 本地配置与凭据：绝不入库 ──────────────────────────────────
+# 这些文件含真实 API key 或本机路径，任何人都不要提交
+.credentials.yaml
+*.credentials.yaml
+.env
+.env.*
+channels.json
+imagegen-relay.channels.json
+imagegen-relay.status.json
+*.local.json
+
+# ── 运行期产物 ────────────────────────────────────────────────
+*.log
+*.tmp
+.DS_Store
+Thumbs.db

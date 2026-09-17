@@ -1,0 +1,22 @@
+{
+  "name": "dsh-imagegen-relay",
+  "version": "1.0.0",
+  "private": true,
+  "description": "把多个生图渠道聚合成一个 OpenAI 兼容端点，供 dsh-image-gen 的 openai-compat provider 使用；随 DSH 启停，无常驻进程",
+  "type": "module",
+  "main": "index.js",
+  "exports": {
+    ".": "./index.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "index.js",
+    "cordis.patch.yml"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "license": "MIT"
+}

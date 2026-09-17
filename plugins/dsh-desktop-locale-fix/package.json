@@ -1,0 +1,22 @@
+{
+  "name": "dsh-desktop-locale-fix",
+  "version": "1.0.0",
+  "private": true,
+  "description": "把已设置的语言偏好主动推给桌面 desktopRuntime facade，修复重启后系统通知回落到英文的问题",
+  "type": "module",
+  "main": "index.js",
+  "exports": {
+    ".": "./index.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "index.js",
+    "cordis.patch.yml"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "license": "MIT"
+}

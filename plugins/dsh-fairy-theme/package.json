@@ -1,0 +1,36 @@
+{
+  "name": "dsh-fairy-theme",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Fairy theme for DeepSeek Harness: HDD-styled palette (via official --dsw-* tokens), a floating Fairy eye driven by real agent state, and 44 event sound effects. No DOM selector pinning, no TTS.",
+  "main": "./lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./client": "./lib/client.js",
+    "./package.json": "./package.json"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-slots",
+        "@deepseek-ai/dsh-client-ui-settings",
+        "@deepseek-ai/dsh-client-ui-primitives"
+      ]
+    }
+  },
+  "license": "MIT",
+  "files": [
+    "lib",
+    "assets",
+    "cordis.patch.yml",
+    "README.md"
+  ],
+  "scripts": {
+    "test": "node test/selftest.mjs"
+  }
+}

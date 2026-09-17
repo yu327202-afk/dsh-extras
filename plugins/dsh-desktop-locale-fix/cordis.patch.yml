@@ -1,0 +1,11 @@
+# dsh-desktop-locale-fix bundle patch layer —— 把本插件挂载进 profile 树。
+#
+# 作用：桌面通知的文案取自宿主侧 desktopRuntime facade 的 locale，而该 facade 在启动时
+# 用的是原生快照（默认 "en"），只有当语言偏好发生一次真实变更时才会被 settings/updated 更新。
+# 本插件在启动后主动把当前偏好推给 facade，从而让系统通知稳定跟随语言设置。
+- insert:
+    - id: dsh-desktop-locale-fix
+      name: dsh-desktop-locale-fix
+      config:
+        # settings 里没有有效语言偏好时的兜底（本机用户要求中文）
+        preference: zh

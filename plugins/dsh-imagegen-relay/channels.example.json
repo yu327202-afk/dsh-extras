@@ -1,0 +1,22 @@
+{
+  "_说明": "DSH 生图渠道配置示例。改完保存即生效，无需重启 DSH。",
+  "_位置": "复制为 ~/.dsh/imagegen-relay.channels.json 后填写。该文件不进任何仓库。",
+  "_字段": {
+    "id": "渠道标识，用在模型名前缀里。只允许字母数字和 . _ -，不能以符号开头",
+    "label": "显示名（只看日志/健康检查用）",
+    "base": "上游 OpenAI 兼容根地址，到 /v1 为止，末尾不要斜杠",
+    "credentialRef": ".credentials.yaml 里 refs 段的键名（如 P_MY_PROVIDER）",
+    "models": "该渠道支持的模型裸名数组（不带前缀）"
+  },
+  "_用法": "生成时把模型名写成「渠道id/模型名」，例如 myprovider/gpt-image-2。不带前缀则按顺序回落第一家。",
+  "_安全提示": "credentialRef 只是【键名】，真实密钥写在 .credentials.yaml 里。不要把密钥直接填进本文件。",
+  "channels": [
+    {
+      "id": "myprovider",
+      "label": "我的生图渠道",
+      "base": "https://api.example.com/v1",
+      "credentialRef": "P_MY_PROVIDER",
+      "models": ["gpt-image-2", "gpt-image-2.5"]
+    }
+  ]
+}
